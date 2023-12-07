@@ -26,7 +26,7 @@ const ContractorSidebar= ({ setActiveContent }) => {
    <div className="h-full  flex flex-col justify-between px-3 py-4 overflow-y-auto bg-gray-50 bg-sidebar ">
       <a href="https://flowbite.com/" className="flex  items-end pl-2.5 p-5">
             <img className="h-6 mr-3 sm:h-7" src={myLogoWhite} alt="Your Image" /> 
-            <h2 className="text-sm text-white font-semibold">Client </h2>
+            <h2 className="text-sm text-white font-semibold">Contractor </h2>
       </a>
       <ul className="space-y-2 font-medium mb-40">
          <li>
