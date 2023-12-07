@@ -60,7 +60,7 @@ const LoginForm = () => {
       setUserId(userId);
   
       // Assuming user_type is part of the response data
-      const userType = response.data.user_type_id;
+      const userType = response.data.users_type_id;
   
       if (userType === 2) {
         // Navigate to the contractor dashboard

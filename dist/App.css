@@ -1276,10 +1276,6 @@ input:checked + .toggle-bg{
   right: 0px;
 }
 
-.right-10{
-  right: 2.5rem;
-}
-
 .right-3{
   right: 0.75rem;
 }
@@ -1350,10 +1346,6 @@ input:checked + .toggle-bg{
 
 .m-2{
   margin: 0.5rem;
-}
-
-.m-4{
-  margin: 1rem;
 }
 
 .-mx-1{
@@ -1555,6 +1547,14 @@ input:checked + .toggle-bg{
 
 .mt-8\.6m{
   margin-top: 8.6rem;
+}
+
+.ml-4{
+  margin-left: 1rem;
+}
+
+.mb-12{
+  margin-bottom: 3rem;
 }
 
 .block{
@@ -2574,9 +2574,9 @@ input:checked + .toggle-bg{
   background-color: rgb(226 109 92 / var(--tw-bg-opacity));
 }
 
-.bg-black{
+.bg-blue-500{
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: rgb(63 131 248 / var(--tw-bg-opacity));
 }
 
 .bg-blue-600{
@@ -3117,10 +3117,6 @@ input:checked + .toggle-bg{
 
 .p-2\.5{
   padding: 0.625rem;
-}
-
-.p-20{
-  padding: 5rem;
 }
 
 .p-3{
@@ -6102,10 +6098,6 @@ select:-webkit-autofill:focus {
 
   .sm\:flex{
     display: flex;
-  }
-
-  .sm\:hidden{
-    display: none;
   }
 
   .sm\:h-10{

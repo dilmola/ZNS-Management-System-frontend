@@ -5,6 +5,8 @@ import Navbar from '../components/Navbar';
 import Body from '../components/Body';
 import Profile from '../components/Profile';
 import Appointment from '../components/Appointment';
+import Quotation from '../components/Quotation';
+
 import { useParams } from 'react-router-dom';
 
 const Dashboard = () => {

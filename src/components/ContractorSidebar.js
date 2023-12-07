@@ -8,7 +8,7 @@ import appointment from '../img/icon/appointment-icon.png';
 import logout from '../img/icon/logout-icon.png';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
-const Sidebar= ({ setActiveContent }) => {
+const ContractorSidebar= ({ setActiveContent }) => {
    const navigate = useNavigate(); // useNavigate hook
 
   const handleLogout = () => {
@@ -69,17 +69,7 @@ const Sidebar= ({ setActiveContent }) => {
                <span className="ml-8">Shop</span>
             </a>
          </li>
-         <li>
-            <a
-              href="#"
-              onClick={() => setActiveContent('appointment')}
-              className="flex items-center p-2 text-slate-200 rounded-lg group"
-            >
-            <div className="w-6">   
-              <img className="h-6 mr-3 sm:h-5" src={appointment} alt="appointment" /></div>
-              <span className="ml-8">Appointment</span>
-            </a>
-         </li>    
+        
       </ul>
         <a href="#" onClick={handleLogout} className="flex items-center p-2 text-slate-200 rounded-lg group">
               <img className="h-6 mr-3 sm:h-5" src={logout} alt="logout" />
@@ -93,4 +83,4 @@ const Sidebar= ({ setActiveContent }) => {
   );
 }
 
-export default Sidebar;
+export default ContractorSidebar;

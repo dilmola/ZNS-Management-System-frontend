@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Sidebar from '../components/Sidebar';
+import ContractorSidebar from '../components/ContractorSidebar';
 import Navbar from '../components/Navbar';
-import Body from '../components/Body';
+import BodyContractor from '../components/BodyContractor';
 import Profile from '../components/Profile';
 import Appointment from '../components/Appointment';
+import Quotation from '../components/Quotation';
+
 import { useParams } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -36,12 +38,13 @@ const Dashboard = () => {
   return (
     <div className="h-screen bg-PlatinumColor">
       <div className="bg-PlatinumColor bg-contain m-0 p-0">
-        <Sidebar setActiveContent={setActiveContent} />
+        <ContractorSidebar setActiveContent={setActiveContent} />
         <div className="relative md:ml-64 flex flex-col">
           <Navbar userData={userData} />
           <>          
+            {activeContent === 'quotation' && <Quotation userData={userData} />}
             {activeContent === 'profile' && <Profile userData={userData} />}
-            {activeContent === 'body' && <Body userData={userData} />}
+            {activeContent === 'body' && <BodyContractor userData={userData} />}
             {activeContent === 'appointment' && <Appointment userData={userData} />}
           </>
         </div>

@@ -47,7 +47,7 @@ class Registration extends Component {
       render() {
         if (this.state.success) {
           // Use the navigate function from the useNavigate hook
-          window.location.href = "/dashboard";
+          window.location.href = "/login";
         }
     
     

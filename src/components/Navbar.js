@@ -12,7 +12,7 @@ const Navbar = ({ userData }) => {
 
   return (
     <div className='flex'>
-        <nav className="fixed top-0 z-50 md:w-[83.2%] lg:w-[88%] border-b border-black border-b-2 bg-LightSilverColor">
+        <nav className="fixed top-0 z-40 md:w-[83.2%] lg:w-[88%] border-b border-black border-b-2 bg-LightSilverColor">
             <div className="px-12 py-4">
                 <div className="flex items-center justify-between mt-14">
                     <div className="flex items-center justify-start">                  

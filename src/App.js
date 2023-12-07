@@ -16,7 +16,6 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard/:userId" element={<Dashboard />} />
           <Route path="/dashboard/contractor/:userId" element={<ContractorDashboard />} />
-
         </Routes>
       </Router>
     </div>
