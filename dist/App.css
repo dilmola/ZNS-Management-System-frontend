@@ -1573,6 +1573,14 @@ input:checked + .toggle-bg{
   margin-top: 8.6rem;
 }
 
+.ml-4{
+  margin-left: 1rem;
+}
+
+.mb-12{
+  margin-bottom: 3rem;
+}
+
 .block{
   display: block;
 }
@@ -3185,6 +3193,10 @@ input:checked + .toggle-bg{
 
 .p-6{
   padding: 1.5rem;
+}
+
+.p-8{
+  padding: 2rem;
 }
 
 .p-8{
@@ -6235,6 +6247,14 @@ select:-webkit-autofill:focus {
 
   .sm\:mb-0{
     margin-bottom: 0px;
+  }
+
+  .sm\:block{
+    display: block;
+  }
+
+  .sm\:inline-block{
+    display: inline-block;
   }
 
   .sm\:block{
