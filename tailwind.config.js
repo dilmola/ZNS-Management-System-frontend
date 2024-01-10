@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   
-    content: [
-      "./src/**/*.{html,js}",
-      "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
-      "./node_modules/flowbite/**/*.js",
-      "./node_modules/tailwind-datepicker-react/dist/**/*.js",
-    ],
+  content: [
+    "./src/**/*.{html,js}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/flowbite/**/*.js",
+    "./node_modules/tailwind-datepicker-react/dist/**/*.js",
+  ],
 
   theme: {
     borderRadius: {
@@ -48,7 +48,9 @@ module.exports = {
         'LightSilverColor': '#D9D9D9',
         'PlatinumColor': '#E5E9E2',
         'TerraCotta' : '#E26D5C' ,
-        'PlatinumColorCalendar' : '#DADED7',       
+        'PlatinumColorCalendar' : '#DADED7', 
+        'CharlestonGreenColorCard' : '#2C2C2C',  
+        'BeigeColor' : '#FAF3DD',   
       },    
       borderColor: {
         'TerraCotta' : '#E26D5C',     
@@ -56,21 +58,15 @@ module.exports = {
       colors: {
         'PlatinumColorText': '#E5E9E2', 
         'CharlestonGreenText': '#2C2C2C',  
-        'TerraCotta' : '#E26D5C' ,
+        'TerraCotta' : '#E26D5C', 
+        'TerraCottaLight' : '#e68072',
+        'TerraCottaDark' : '#de5a46',
 
       },
-        // fontFamily: {
-        //   'Opensans': ['Open Sans', sans-serif],
-        // },
-
-        
-    },
-    fontFamily:{
-      poppins: ["Poppins", "sans-serif"],
-    }
-
-
-    
+      fontFamily: {
+        custom: ['Poppins', 'sans-serif'],
+      },
+    }   
   },
   plugins: [
     require('tailwindcss'),

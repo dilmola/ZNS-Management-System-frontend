@@ -1,0 +1,158 @@
+import React, { useState, useEffect } from "react";
+import Table from "../../components/common/Table/Table_Component";
+import { ListCardForPaymentStatus } from "../../components/common/Cards";
+import { useParams } from "react-router-dom"; // Import useParams
+import showToast from "../../components/common/Toast.js";
+import { ToastContainer } from "react-toastify";
+import CustomModal from "../../components/common/Modal";
+import ApiService from "../../API/ApiService";
+
+const columns = [
+  { header: "No", accessor: "id" },
+  { header: "Name of contractor", accessor: "contractor_fullname" },
+  { header: "Date Appointment", accessor: "date_appointment" },
+  { header: "Date Submit", accessor: "add_appointment_date" },
+  { header: "Status", accessor: "appointment_status" },
+];
+
+const ContractorDashboard = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [appointmentRowData, selectedAppointmentRowData] = useState(null);
+  const { userId } = useParams(); // Get user_id from URL params
+
+  const handleRowClick = (row) => {
+    setIsModalOpen(true);
+    selectedAppointmentRowData(row);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    selectedAppointmentRowData(null);
+  };
+
+  const handleAcceptClick = async () => {
+    try {
+      const updatedData = {
+        ...appointmentRowData,
+        appointment_status: 1,
+      };
+      const endpointupdatestatus = `update/appointment/${updatedData.appointment_id}/contractor/${userId}/status/${updatedData.appointment_status}`;
+      await ApiService.update(endpointupdatestatus, updatedData);
+      showToast("👍 Successful Submit!");
+
+      closeModal();
+      fetchData();
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
+  const [tableData, setTableData] = useState([]);
+  const fetchData = async () => {
+    try {
+      const endpointAppointmentList = "view/listforcontractor/appointment";
+      const responseAppointmentList = await ApiService.get(
+        endpointAppointmentList
+      );
+      const appointmentsData = responseAppointmentList.appointment || [];
+
+      const transformedData = appointmentsData.map((appointment, index) => ({
+        id: index + 1,
+        contractor_fullname: appointment.contractor_fullname,
+        date_appointment: appointment.date_appointment,
+        appointment_status: appointment.appointment_status,
+        add_appointment_date: appointment.add_appointment_date,
+
+        client_fullname: appointment.client_fullname,
+        appointment_id: appointment.appointment_id,
+        remark: appointment.remark,
+        address: appointment.address,
+        appointment_type: appointment.appointment_type,
+      }));
+
+      setTableData(transformedData);
+      console.log(transformedData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  console.log("Table Data:", tableData);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div className="p-12 mt-8.6m">
+      <h2 className="text-2xl	mb-6">Payment (In progress)</h2>
+      <div>
+        <ListCardForPaymentStatus />
+      </div>
+
+      <h2 className="text-2xl	mb-6">Appointment</h2>
+      <div className="rounded-lg border-2 border-black ">
+        <Table data={tableData} columns={columns} onRowClick={handleRowClick} />
+      </div>
+
+      <CustomModal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        content={
+          appointmentRowData && (
+            <div className="p-8">
+              <h2 className="text-2xl mb-6">Appointment Detail</h2>
+
+              <div className="mb-2">
+                <p className="font-semibold">Name of client:</p>
+                <p>{appointmentRowData.client_fullname}</p>
+              </div>
+
+              <div className="mb-2">
+                <p className="font-semibold">Name of contractor:</p>
+                {appointmentRowData.contractor_fullname ? (
+                  <p>{appointmentRowData.contractor_fullname}</p>
+                ) : (
+                  <p className="font-semibold text-red-500"> No assign </p>
+                )}
+              </div>
+
+              <div className="mb-2">
+                <p className="font-semibold">Date Appointment:</p>
+                <p>{appointmentRowData.date_appointment}</p>
+              </div>
+
+              <div className="mb-2">
+                <p className="font-semibold">Date Submit:</p>
+                <p>{appointmentRowData.add_appointment_date}</p>
+              </div>
+              <hr className="mb-6"></hr>
+
+              <div className="mb-2 ">
+                <p className="font-semibold">Remark:</p>
+                <p>{appointmentRowData.remark}</p>
+              </div>
+              <hr className="mb-6"></hr>
+
+              <div className="mb-2">
+                <p className="font-semibold"> Contractor action:</p>
+                {appointmentRowData.appointment_status === "Accepted" ? (
+                  <p className="font-semibold text-green-500">Accepted</p>
+                ) : (
+                  <button
+                    onClick={handleAcceptClick}
+                    className="bg-green-500 text-white p-2 rounded-md"
+                  >
+                    Accept
+                  </button>
+                )}
+              </div>
+            </div>
+          )
+        }
+      />
+      <ToastContainer />
+    </div>
+  );
+};
+
+export default ContractorDashboard;
