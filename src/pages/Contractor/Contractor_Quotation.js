@@ -21,7 +21,6 @@ const Quotation = () => {
   const fetchData = async () => {
     try {
       const response = await fetch("your_api_endpoint");
-    
 
       const data = await response.json();
       console.log("Fetched data:", data);
@@ -139,7 +138,7 @@ const Quotation = () => {
               </thead>
               <tbody>
                 {formFields.map((field, index) => (
-                  <tr key={index} className="px-5 py-3 ">
+                  <tr key={index} className="px-5 py-3">
                     <td>
                       <input
                         name=""
@@ -154,13 +153,13 @@ const Quotation = () => {
                     </td>
                     <td>
                       <input
-                        name="details_appointment_items"
+                        name="Perkara"
                         type="text"
-                        value={field.price_quotation_items}
+                        value={field.details_appointment_items}
                         onChange={(e) =>
                           handleFieldChange(
                             index,
-                            "price_quotation_items",
+                            "details_appointment_items",
                             e.target.value
                           )
                         }
@@ -169,13 +168,13 @@ const Quotation = () => {
                     </td>
                     <td>
                       <input
-                        name="quantity_appointment_items"
+                        name="Kuantiti"
                         type="number"
-                        value={field.price_quotation_items}
+                        value={field.quantity_appointment_items}
                         onChange={(e) =>
                           handleFieldChange(
                             index,
-                            "price_quotation_items",
+                            "quantity_appointment_items",
                             e.target.value
                           )
                         }
@@ -184,7 +183,7 @@ const Quotation = () => {
                     </td>
                     <td>
                       <input
-                        name="price_appointment_items"
+                        name="Harga"
                         type="text"
                         value={
                           isNaN(parseFloat(field.price_appointment_items))
@@ -205,6 +204,7 @@ const Quotation = () => {
                     </td>
                     <td>
                       <input
+                        name="Jumlah"
                         type="text"
                         value={field.Jumlah}
                         onChange={(e) =>
@@ -216,7 +216,7 @@ const Quotation = () => {
                     <td className="flex items-center justify-center">
                       <button
                         onClick={() => handleDeleteRow(index)}
-                        className="bg-red-500 text-white p-2 rounded w-max	  "
+                        className="bg-red-500 text-white p-2 rounded w-max"
                       >
                         Delete
                       </button>
