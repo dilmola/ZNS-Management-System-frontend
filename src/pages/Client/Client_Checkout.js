@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "../../components/common/Table/Table_Component";
-import ApiService from "../../API/ApiService";
+import ApiService from "../../API/ApiService.js";
 import { useParams } from "react-router-dom";
 import Button from "../../components/common/SaveButton";
 import showToast from "../../components/common/Toast.js";

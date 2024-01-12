@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"; // Import useParams
 import showToast from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
 import CustomModal from "../../components/common/Modal";
-import ApiService from "../../API/ApiService";
+import ApiService from "../../API/ApiService.js";
 
 const columns = [
   { header: "No", accessor: "id" },
@@ -36,14 +36,12 @@ const ContractorDashboard = () => {
     setIsModalOpen(true);
     selectedAppointmentRowData(row);
     selectedAppointmentRowData2(row);
-
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     selectedAppointmentRowData(null);
     selectedAppointmentRowData2(null);
-
   };
 
   const handleAcceptClick = async () => {
@@ -149,7 +147,7 @@ const ContractorDashboard = () => {
         isOpen={isModalOpen}
         closeModal={closeModal}
         content={
-          appointmentRowData&& (
+          appointmentRowData && (
             <div className="p-8">
               <h2 className="text-2xl mb-6">Appointment Detail</h2>
 
