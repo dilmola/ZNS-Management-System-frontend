@@ -14,6 +14,7 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
   const [image, setImage] = useState(null);
   const [nameOfItem, setNameOfItem] = useState("");
   const [descriptionItem, setDescriptionItem] = useState("");
+  const [quantityItem, setQuantityItem] = useState("");
 
   const [formData, setFormData] = useState({
     name_of_item: "",
@@ -51,12 +52,13 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
     console.log("handleSubmit called");
 
     e.preventDefault();
-  
+
     const itemListData = new FormData();
     itemListData.append("image", image);
     itemListData.append("name_of_item", nameOfItem);
     itemListData.append("description_item", descriptionItem);
-  
+    itemListData.append("quantity_item", quantityItem);
+
     try {
       const updateProfileData = `update/shop/item/lists/${selectedItem.item_id}`;
       await ApiService.update(updateProfileData, itemListData);
@@ -66,7 +68,6 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
       console.error("Error updating status:", error);
     }
   };
-  
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -108,6 +109,14 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
                   value={formData.description_item}
                   onChange={handleChange}
                   className="mb-8 focus:outline-none focus:border-TerraCotta focus:ring-TerraCotta focus:ring-inset w-full border border-1 border-gray-300 p-2 rounded bg-gray-50 text-black"
+                />
+                <label className="font-semibold">Quantity</label>
+                <Input
+                  className="mb-8"
+                  type="number"
+                  name="quantity_item"
+                  value={formData.quantity_item}
+                  onChange={handleChange}
                 />
                 <label className="font-semibold">Price: (RM)</label>
                 <Input

@@ -51,7 +51,7 @@ const AdminAppointment = () => {
             </div>
           )
         }
-      />{" "}
+      />
     </div>
   );
 };

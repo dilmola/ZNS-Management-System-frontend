@@ -1,12 +1,6 @@
 import React from "react";
 
-const ReusableButton = ({
-  label,
-  color,
-  src,
-  onClick ,
-  className,
-}) => {
+const ReusableButton = ({ label, color, src, onClick, className }) => {
   const getButtonStyle = () => {
     switch (color) {
       case "SubmitButton":

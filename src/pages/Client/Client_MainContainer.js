@@ -5,6 +5,7 @@ import ClientDashboard from "../Client/Client_Dashboard";
 import ClientProfile from "../Client/Client_Profile";
 import ClientShop from "../Client/Client_Shop";
 import ClientAppointment from "../Client/Client_Appointment";
+import ClientCheckOut from "../Client/Client_Checkout";
 
 import { useParams } from "react-router-dom";
 
@@ -26,6 +27,7 @@ const Cliet_MainContainer = () => {
           {activeContent === "clientDashboard" && <ClientDashboard />}
           {activeContent === "clientProfile" && <ClientProfile />}
           {activeContent === "clientShop" && <ClientShop />}
+          {activeContent === "clientCheckOut" && <ClientCheckOut />}
           {activeContent === "clientAppointment" && <ClientAppointment />}
         </div>
       </div>

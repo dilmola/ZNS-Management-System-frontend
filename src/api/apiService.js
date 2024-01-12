@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 const ApiService = {
@@ -20,12 +19,7 @@ const ApiService = {
     try {
       const response = await axios.put(
         `${ApiService.baseURL}/${endpoint}`,
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        data
       );
       console.log("API Response Data:", response.data);
 

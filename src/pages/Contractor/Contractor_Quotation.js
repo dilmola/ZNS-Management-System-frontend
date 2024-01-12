@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import ApiService from "../../API/ApiService";
 
 import PrintQuotation from "../../components/common/PrintQuotation";
 
@@ -11,11 +11,42 @@ const Quotation = () => {
   const componentRef = useRef();
   const navigate = useNavigate();
   const [isTableVisible, setIsTableVisible] = useState(false);
+  const [selectedDropdownValue, setSelectedDropdownValue] = useState(""); // Step 1: State for dropdown
+  const [options, setOptions] = useState([]);
+
+  const handleDropdownChange = (value) => {
+    setSelectedDropdownValue(value); // Step 2: Handle dropdown change
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("your_api_endpoint");
+    
+
+      const data = await response.json();
+      console.log("Fetched data:", data);
+
+      return data;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      // Handle the error or rethrow it
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleAddField = () => {
     setFormFields([
       ...formFields,
-      { Bil: "", Perkara: "", Kuantiti: "", Harga: "", Jumlah: "" },
+      {
+        details_appointment_items: "",
+        quantity_appointment_items: "",
+        price_appointment_items: "",
+        appointment_appointment_id: "",
+      },
     ]);
     setIsTableVisible(true);
   };
@@ -43,21 +74,38 @@ const Quotation = () => {
     content: () => componentRef.current,
   });
 
-  const handleSaveQuotation = () => {
-    axios
-      .post("your_quotation_api_endpoint", { fields: formFields })
-      .then((response) => {
-        console.log("Quotation saved successfully", response.data);
-        navigate("/success");
-      })
-      .catch((error) => {
-        console.error("Error saving quotation", error);
+  const handleSaveQuotation = async () => {
+    try {
+      const updateProfileData = `new/appointment/payment/item/`;
+      const response = await ApiService.update(updateProfileData, {
+        fields: formFields,
       });
+      console.log("Quotation saved successfully", response.data);
+    } catch (error) {
+      console.error("Error saving quotation", error);
+    }
   };
 
   return (
     <div className="p-12 mt-8.6m">
       <div className="p-4">
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Select an option
+          </label>
+          <select
+            value={selectedDropdownValue}
+            onChange={(e) => handleDropdownChange(e.target.value)}
+            className="w-full p-2 border rounded focus:outline-none focus:border-TerraCotta focus:ring-TerraCotta focus:ring-inset"
+          >
+            <option value="">Select an option</option>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="flex justify-between mb-12">
           <button
             type="submit"
@@ -75,7 +123,7 @@ const Quotation = () => {
             Print
             {/* <img className="ml-12 w-3.5 h-3.5" alt="Submit Icon" /> */}
           </button>
-        </div>{" "}
+        </div>
         {isTableVisible && (
           <div className="rounded-lg border-2 border-black">
             <table className="table-auto w-full ">
@@ -94,6 +142,7 @@ const Quotation = () => {
                   <tr key={index} className="px-5 py-3 ">
                     <td>
                       <input
+                        name=""
                         type="text"
                         value={index + 1}
                         readOnly
@@ -105,34 +154,51 @@ const Quotation = () => {
                     </td>
                     <td>
                       <input
+                        name="details_appointment_items"
                         type="text"
-                        value={field.Perkara}
+                        value={field.price_quotation_items}
                         onChange={(e) =>
-                          handleFieldChange(index, "Perkara", e.target.value)
+                          handleFieldChange(
+                            index,
+                            "price_quotation_items",
+                            e.target.value
+                          )
                         }
                         className="w-full bg-transparent border-none rounded p-2 text-left focus:outline-none focus:border-TerraCotta focus:ring-TerraCotta focus:ring-inset"
                       />
                     </td>
                     <td>
                       <input
+                        name="quantity_appointment_items"
                         type="number"
-                        value={field.Kuantiti}
+                        value={field.price_quotation_items}
                         onChange={(e) =>
-                          handleFieldChange(index, "Kuantiti", e.target.value)
+                          handleFieldChange(
+                            index,
+                            "price_quotation_items",
+                            e.target.value
+                          )
                         }
                         className="w-full bg-transparent border-none rounded p-2 text-center focus:outline-none focus:border-TerraCotta focus:ring-TerraCotta focus:ring-inset"
                       />
                     </td>
                     <td>
                       <input
+                        name="price_appointment_items"
                         type="text"
                         value={
-                          isNaN(parseFloat(field.Harga))
+                          isNaN(parseFloat(field.price_appointment_items))
                             ? "0.00"
-                            : parseFloat(field.Harga).toFixed(2)
+                            : parseFloat(field.price_appointment_items).toFixed(
+                                2
+                              )
                         }
                         onChange={(e) =>
-                          handleFieldChange(index, "Harga", e.target.value)
+                          handleFieldChange(
+                            index,
+                            "price_appointment_items",
+                            e.target.value
+                          )
                         }
                         className="w-full bg-transparent border-none rounded p-2 text-center focus:outline-none focus:border-TerraCotta focus:ring-TerraCotta focus:ring-inset"
                       />
@@ -161,6 +227,13 @@ const Quotation = () => {
             </table>
           </div>
         )}
+        <button
+          type="submit"
+          className="text-white bg-TerraCotta hover:bg-TerraCotta focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-4 text-center inline-flex items-center me-2"
+          onClick={handleSaveQuotation}
+        >
+          Save Quotation
+        </button>
         <div className="hidden">
           <PrintQuotation fields={formFields} ref={componentRef} />
         </div>

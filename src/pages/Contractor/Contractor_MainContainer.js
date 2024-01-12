@@ -3,6 +3,7 @@ import Sidebar from "../../components/common/Sidebar";
 import Navbar from "../../components/common/Navbar";
 import ContractorDashboard from "../Contractor/Contractor_Dashboard";
 import ContractorProfile from "../Contractor/Contractor_Profile";
+import ContractorQuotation from "../Contractor/Contractor_Quotation";
 
 import { useParams } from "react-router-dom";
 
@@ -23,6 +24,8 @@ const Contractor_MainContainer = () => {
           <Navbar />
           {activeContent === "contractorDashboard" && <ContractorDashboard />}
           {activeContent === "contractorProfile" && <ContractorProfile />}
+          {activeContent === "contractorQuotation" && <ContractorQuotation />}
+
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import showToast from "../../../components/common/Toast.js";
 const ModalAddShop = ({ isOpen, closeModal, addItem }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   // const [name, setName] = useState("");
-  const [quantity_item, setQuantityItem] = useState("");
+  const [quantityItem, setQuantityItem] = useState("");
   const [priceItem, setPriceItem] = useState("");
 
   const [image, setImage] = useState(null);
@@ -27,6 +27,8 @@ const ModalAddShop = ({ isOpen, closeModal, addItem }) => {
     formData.append("image", image);
     formData.append("name_of_item", nameOfItem);
     formData.append("description_item", descriptionItem);
+    formData.append("quantity_item", quantityItem);
+    formData.append("price_item", priceItem);
 
     try {
       const response = await fetch(
@@ -71,14 +73,23 @@ const ModalAddShop = ({ isOpen, closeModal, addItem }) => {
                 onChange={(e) => setDescriptionItem(e.target.value)}
                 className="mb-8 focus:outline-none focus:border-TerraCotta focus:ring-TerraCotta focus:ring-inset w-full border border-1 border-gray-300 p-2 rounded bg-gray-50 text-black"
               />
+              <label className="font-semibold">Quantity</label>
+              <Input
+                className="mb-8"
+                type="number"
+                name="quantity_item"
+                value={quantityItem}
+                onChange={(e) => setQuantityItem(e.target.value)}
+              />
               <label className="font-semibold">Price: (RM)</label>
               <Input
                 className="mb-8"
                 type="number"
                 name="price_item"
                 value={priceItem}
-                onChange={(e) => setPriceItem(e.target.value)}
-                // Add value and onChange as needed for the price field
+                onChange={(e) =>
+                  setPriceItem(parseFloat(e.target.value).toFixed(2))
+                }
               />
               <label className="font-semibold">Add image:</label>
               <div className="mb-8 max-w-sm">

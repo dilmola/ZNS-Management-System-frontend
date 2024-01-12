@@ -28,8 +28,10 @@ const Table = ({ data, columns, onRowClick }) => {
           {data.map((row, rowIndex) => (
             <tr
               key={rowIndex}
-              onClick={() => onRowClick(row)}
-              className="px-5 py-3 cursor-pointer rounded-full transition-colors hover:bg-[#f4f6f3]"
+              onClick={onRowClick ? () => onRowClick(row) : null}
+              className={`px-5 py-3 ${
+                onRowClick ? "cursor-pointer rounded-full transition-colors hover:bg-[#f4f6f3]" : "cursor-auto	rounded-full transition-colors hover:bg-[#f4f6f300]"
+              } `}
             >
               {columns.map((column, columnIndex) => {
                 if (column.accessor === "appointment_status") {

@@ -61,7 +61,7 @@ const InvoiceAppointment = () => {
             </div>
           )
         }
-      />{" "}
+      />
     </div>
   );
 };

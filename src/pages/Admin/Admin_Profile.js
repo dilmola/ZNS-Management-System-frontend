@@ -53,8 +53,10 @@ const AdminProfile = () => {
     }
   };
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (userId) {
+      fetchData();
+    }
+  }, [userId]);
 
   const handleSubmit = async () => {
     try {
@@ -66,11 +68,12 @@ const AdminProfile = () => {
         password,
         username,
       };
+      console.log("userProfileData:", userProfileData);
 
       const updateProfileData = `update/data/my-profile/${userId}`;
       await ApiService.update(updateProfileData, userProfileData);
-      console.log("succesful");
-      showToast("👍 Successful Submit!");
+      console.log("successful");
+      // showToast("👍 Successful Submit!");
     } catch (error) {
       console.error("Error updating status:", error);
     }

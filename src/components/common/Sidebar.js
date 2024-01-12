@@ -5,7 +5,7 @@ import profile from "../../img/icon/profile-icon.png";
 import shopping from "../../img/icon/shopping-icon.png";
 import order from "../../img/icon/order-icon.png";
 import appointment from "../../img/icon/appointment-icon.png";
-import payment from "../../img/icon/payment-icon.png";
+// import payment from "../../img/icon/payment-icon.png";
 import logout from "../../img/icon/logout-icon.png";
 import contractor from "../../img/icon/user-icon.png";
 import client from "../../img/icon/user-icon.png";
@@ -56,7 +56,7 @@ const Sidebar = ({ setActiveContent, id }) => {
 
   const handleMenuClick = (menuType) => {
     if (users_type_id === 1) {
-      console.log("User Type 1 - Setting ActiveContent to ", menuType);
+      console.log("User Type 1 - Setting ActiveContent to admin");
       if (menuType === "dashboard") {
         setActiveContent("adminDashboard");
       } else if (menuType === "profile") {
@@ -67,16 +67,16 @@ const Sidebar = ({ setActiveContent, id }) => {
         setActiveContent("adminAppointment");
       }
     } else if (users_type_id === 2) {
-      console.log("User Type 2 - Setting ActiveContent to ", menuType);
+      console.log("User Type 2 - Setting ActiveContent to contractor");
       if (menuType === "dashboard") {
         setActiveContent("contractorDashboard");
       } else if (menuType === "profile") {
         setActiveContent("contractorProfile");
       } else if (menuType === "appointment") {
-        setActiveContent("contractorAppointment");
+        setActiveContent("contractorQuotation");
       }
     } else if (users_type_id === 3) {
-      console.log("User Type 3 - Setting ActiveContent to ", menuType);
+      console.log("User Type 3 - Setting ActiveContent to client");
       if (menuType === "dashboard") {
         setActiveContent("clientDashboard");
       } else if (menuType === "profile") {
@@ -145,85 +145,116 @@ const Sidebar = ({ setActiveContent, id }) => {
                   </a>
                 </li>
                 {users_type_id !== 2 && (
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
-                        onClick={() => {
-                          if (users_type_id === 1) {
-                            setShowAdditionalItemsForShop(
-                              !showAdditionalItemsForShop
-                            );
-                          } else {
-                            handleMenuClick("shop");
-                          }
-                        }}
-                      >
-                        <div className="w-auto">
-                          <img
-                            className="h-6 mr-3 sm:h-5"
-                            src={shopping}
-                            alt="shop"
-                          />
-                        </div>
-                        <span className="ml-8">Shop</span>
-                      </a>
-                    </li>
-                    {showAdditionalItemsForShop && (
-                      <>
-                        <li className="transition-opacity duration-1000 ease-in">
-                          <a
-                            href="#"
-                            className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
-                            onClick={() => handleMenuClick("shop")}
-                          >
-                            <div className="w-auto">
-                              <img
-                                className="pl-2 h-6 mr-3 sm:h-5"
-                                src={order}
-                                alt="order"
-                              />
-                            </div>
-                            <span className="ml-8">Manage Shop</span>
-                          </a>
-                        </li>
-                        <li className="transition-opacity duration-1000 ease-in">
-                          <a
-                            href="#"
-                            onClick={() => setActiveContent("quotationShop")}
-                            className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
-                          >
-                            <div className="w-auto">
-                              <img
-                                className="pl-2 h-6 mr-3 sm:h-5"
-                                src={order}
-                                alt="quotation"
-                              />
-                            </div>
-                            <span className="ml-8">Quotation</span>
-                          </a>
-                        </li>
-                        <li className="transition-opacity duration-300 ease-in">
-                          <a
-                            href="#"
-                            onClick={() => setActiveContent("invoiceShop")}
-                            className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
-                          >
-                            <div className="w-auto">
-                              <img
-                                className="pl-2 h-6 mr-3 sm:h-5"
-                                src={order}
-                                alt="invoice"
-                              />
-                            </div>
-                            <span className="ml-8">Invoice</span>
-                          </a>
-                        </li>
-                      </>
-                    )}
-                  </ul>
+                  <>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
+                          onClick={() => {
+                            if (users_type_id === 1 || users_type_id === 3) {
+                              setShowAdditionalItemsForShop(
+                                !showAdditionalItemsForShop
+                              );
+                            } else {
+                              handleMenuClick("shop");
+                            }
+                          }}
+                        >
+                          <div className="w-auto">
+                            <img
+                              className="h-6 mr-3 sm:h-5"
+                              src={shopping}
+                              alt="shop"
+                            />
+                          </div>
+                          <span className="ml-8">Shop</span>
+                        </a>
+                      </li>
+                      {showAdditionalItemsForShop && (
+                        <>
+                          {users_type_id === 1 && (
+                            <>
+                              <li className="transition-opacity duration-1000 ease-in">
+                                <a
+                                  href="#"
+                                  className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
+                                  onClick={() => handleMenuClick("shop")}
+                                >
+                                  <div className="w-auto">
+                                    <img
+                                      className="pl-2 h-6 mr-3 sm:h-5"
+                                      src={order}
+                                      alt="order"
+                                    />
+                                  </div>
+                                  <span className="ml-8">Manage Shop</span>
+                                </a>
+                              </li>                              
+                              <li className="transition-opacity duration-300 ease-in">
+                                <a
+                                  href="#"
+                                  onClick={() =>
+                                    setActiveContent("invoiceShop")
+                                  }
+                                  className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
+                                >
+                                  <div className="w-auto">
+                                    <img
+                                      className="pl-2 h-6 mr-3 sm:h-5"
+                                      src={order}
+                                      alt="invoice"
+                                    />
+                                  </div>
+                                  <span className="ml-8">Invoice</span>
+                                </a>
+                              </li>
+                            </>
+                          )}
+                          {users_type_id === 3 && (
+                            <>
+                              <li className="transition-opacity duration-1000 ease-in">
+                                <a
+                                  href="#"
+                                  className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
+                                  onClick={() => handleMenuClick("shop")}
+                                >
+                                  <div className="w-auto">
+                                    <img
+                                      className="pl-2 h-6 mr-3 sm:h-5"
+                                      src={order}
+                                      alt="order"
+                                    />
+                                  </div>
+                                  <span className="ml-8">List Item</span>
+                                </a>
+                              </li>
+                              <li className="transition-opacity duration-1000 ease-in">
+                                <a
+                                  href="#"
+                                  onClick={() =>
+                                    setActiveContent("clientCheckOut")
+                                  }
+                                  className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
+                                >
+                                  <div className="w-auto">
+                                    <img
+                                      className="pl-2 h-6 mr-3 sm:h-5"
+                                      src={order}
+                                      alt="quotation"
+                                    />
+                                  </div>
+                                  <span className="ml-8">Checkout</span>
+                                </a>
+                              </li>
+                            </>
+                          )}
+                        </>
+                      )}
+                    </ul>
+                  </>
                 )}
+
                 <ul>
                   <li>
                     <a
@@ -304,7 +335,7 @@ const Sidebar = ({ setActiveContent, id }) => {
                     </>
                   )}
                 </ul>
-                <li>
+                {/* <li>
                   <a
                     href="#"
                     onClick={() => setActiveContent("appointment")}
@@ -319,7 +350,7 @@ const Sidebar = ({ setActiveContent, id }) => {
                     </div>
                     <span className="ml-8">Payment</span>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             {users_type_id === 1 && (

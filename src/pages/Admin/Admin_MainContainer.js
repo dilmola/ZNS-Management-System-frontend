@@ -53,7 +53,7 @@ const Admin_MainContainer = () => {
           {activeContent === 'adminShop' && <AdminShop />}
           {activeContent === 'quotationShop' && <QuotationShop />}
           {activeContent === 'invoiceShop' && <InvoiceShop />}
-          {activeContent === 'adminAppointment' && <ManageAppointment />}
+          {/* {activeContent === 'adminAppointment' && <ManageAppointment />} */}
           {activeContent === 'quotationAppointment' && <QuotationAppointment />}
           {activeContent === 'invoiceAppointment' && <InvoiceAppointment />}
 

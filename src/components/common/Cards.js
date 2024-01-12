@@ -111,8 +111,11 @@ const ListCardForShopAdmintStatus = ({
   </div>
 );
 
-const CardForShop = ({ title, description, imgItem, price }) => (
-  <div className="h-auto	bg-CharlestonGreenText rounded-lg border-solid border-2 border-black relative overflow-hidden">
+const CardForShop = ({ title, description, imgItem, price, onClick }) => (
+  <div
+    className="h-auto bg-CharlestonGreenText rounded-lg border-solid border-2 border-black relative overflow-hidden"
+    onClick={onClick}
+  >
     <div className="flex justify-center">
       <div className="h-auto overflow-hidden">
         <img
@@ -128,7 +131,7 @@ const CardForShop = ({ title, description, imgItem, price }) => (
         <p className="card-title text-left text-sm text-white">{description}</p>
       </div>
       <h2 className="text-xl font-semibold	text-white	card-text text-right w-1/2">
-        {price}
+        RM {price}
       </h2>
     </div>
   </div>
