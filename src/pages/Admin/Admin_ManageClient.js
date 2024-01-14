@@ -4,9 +4,12 @@ import CustomModal from "../../components/common/Modal";
 import ApiService from "../../API/ApiService";
 
 const columns = [
-  { header: "No", accessor: "fullname" },
-  { header: "Username", accessor: "email" },
-  { header: "Email", accessor: "phone" },
+  { header: "No", accessor: "id" },
+
+  { header: "Fullname", accessor: "fullname" },
+  { header: "Email", accessor: "email" },
+  { header: "Phone", accessor: "phone" },
+  
 ];
 
 const ManageClient = () => {

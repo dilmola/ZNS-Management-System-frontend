@@ -58,7 +58,7 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
     itemListData.append("name_of_item", nameOfItem);
     itemListData.append("description_item", descriptionItem);
     itemListData.append("quantity_item", quantityItem);
-
+    console.log(itemListData);
     try {
       const updateProfileData = `update/shop/item/lists/${selectedItem.item_id}`;
       await ApiService.update(updateProfileData, itemListData);
@@ -126,11 +126,11 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
                   value={formData.price_item}
                   onChange={handleChange}
                 />
-                <label className="font-semibold">Add image:</label>
+                {/* <label className="font-semibold">Add image:</label> */}
                 {/* <div className="mb-8">
                   <UploadImage onImageChange={handleImageChange} />
                 </div> */}
-                <div className="mb-8 max-w-sm">
+                {/* <div className="mb-8 max-w-sm">
                   <div className="mb-8 max-w-sm">
                     <input
                       type="file"
@@ -138,7 +138,7 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
                       onChange={handleImageChange}
                     />
                   </div>
-                </div>
+                </div> */}
                 <div className="flex justify-end">
                   <div className="mr-4">
                     <Button

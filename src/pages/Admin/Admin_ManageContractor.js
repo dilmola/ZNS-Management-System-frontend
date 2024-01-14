@@ -5,15 +5,18 @@ import ApiService from "../../API/ApiService";
 import ModalViewShopTable from "../Admin/Admin_Modal/Admin_ModalAddContractor";
 
 const columns = [
-  { header: "No", accessor: "fullname" },
-  { header: "Username", accessor: "email" },
-  { header: "Email", accessor: "phone" },
+  { header: "No", accessor: "id" },
+
+  { header: "Fullname", accessor: "fullname" },
+  { header: "Email", accessor: "email" },
+  { header: "Phone", accessor: "phone" },
   { header: "Status", accessor: "contractorStatus" },
 ];
 
 const ManageContractor = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isAddContractorModalOpen, setAddContractorIsModalOpen] = useState(false);
+  const [isAddContractorModalOpen, setAddContractorIsModalOpen] =
+    useState(false);
   const [isModalOpenForRow, setIsModalOpenForRow] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState(null);
@@ -89,12 +92,12 @@ const ManageContractor = () => {
     console.log("Adding a new contractor");
     setAddContractorIsModalOpen(true);
   };
-  
+
   const handleRowClick = (row) => {
     setIsModalOpen(true);
     setAddContractorIsModalOpen(true);
     selectedClientRowData(row);
-    setSelectedRow(row); 
+    setSelectedRow(row);
   };
 
   const closeModal = () => {
@@ -116,7 +119,7 @@ const ManageContractor = () => {
         <Table data={tableData} columns={columns} onRowClick={handleRowClick} />
       </div>
 
-<ModalViewShopTable
+      <ModalViewShopTable
         isOpen={isAddContractorModalOpen}
         closeModal={closeModal}
         selectedItem={selectedRow}

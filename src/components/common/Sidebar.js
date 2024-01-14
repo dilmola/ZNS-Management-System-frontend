@@ -11,6 +11,7 @@ import contractor from "../../img/icon/user-icon.png";
 import client from "../../img/icon/user-icon.png";
 import { getUserInfo } from "../../API/ApiService.js";
 import { useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = ({ setActiveContent, id }) => {
   const [showAdditionalItemsForShop, setShowAdditionalItemsForShop] =
@@ -19,7 +20,14 @@ const Sidebar = ({ setActiveContent, id }) => {
     showAdditionalItemsForAppointment,
     setShowAdditionalItemsForAppointment,
   ] = useState(false);
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    // Your logout logic here
+
+    // Navigate to the login page
+    navigate("/login");
+  };
   const [userType, setUserType] = useState(null);
   const { userId } = useParams();
   const [users_type_id, setUsersTypeId] = useState(null);
@@ -168,7 +176,7 @@ const Sidebar = ({ setActiveContent, id }) => {
                               alt="shop"
                             />
                           </div>
-                          <span className="ml-8">Shop</span>
+                          <span className="ml-8">Inventory</span>
                         </a>
                       </li>
                       {showAdditionalItemsForShop && (
@@ -188,7 +196,7 @@ const Sidebar = ({ setActiveContent, id }) => {
                                       alt="order"
                                     />
                                   </div>
-                                  <span className="ml-8">Manage Shop</span>
+                                  <span className="ml-8">Manage Inventory</span>
                                 </a>
                               </li>
                               <li className="transition-opacity duration-300 ease-in">
@@ -414,6 +422,7 @@ const Sidebar = ({ setActiveContent, id }) => {
 
             <div>
               <a
+                onClick={handleLogout}
                 href="#"
                 className="flex items-center p-3 text-slate-200 rounded-lg group mt-10 hover:bg-gray-700"
               >

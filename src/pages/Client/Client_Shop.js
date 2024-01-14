@@ -93,7 +93,7 @@ const ClientShop = () => {
   };
   return (
     <div className="p-12 mt-8.6m">
-      <h2 className="text-2xl mb-6">Shop</h2>
+      <h2 className="text-2xl mb-6">Inventory</h2>
       <div>
         <ListCardForShop sampleData={data} onRowClick={handleRowClick} />
       </div>

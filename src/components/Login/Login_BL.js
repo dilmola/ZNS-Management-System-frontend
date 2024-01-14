@@ -29,7 +29,7 @@ const LoginComponent = () => {
         setPasswordError("");
         setInvalidError("");
         setLoading(true);
-      
+
       
       
         if (userType === 1) {

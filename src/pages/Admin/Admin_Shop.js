@@ -9,11 +9,11 @@ import ApiService from "../../API/ApiService";
 
 const columns = [
   { header: "No", accessor: "id" },
-  { header: "name_of_item", accessor: "name_of_item" },
-  { header: "description_item", accessor: "description_item" },
-  { header: "quantity_item", accessor: "quantity_item" },
-  { header: "price_item", accessor: "price_item" },
-  { header: "image_item", accessor: "image_item" },
+  { header: "Name of Item", accessor: "name_of_item" },
+  { header: "Description", accessor: "description_item" },
+  { header: "Quantity", accessor: "quantity_item" },
+  { header: "Price", accessor: "price_item" },
+  // { header: "Image", accessor: "image_item" },
 ];
 
 const AdminShop = () => {
@@ -96,7 +96,7 @@ const AdminShop = () => {
 
   return (
     <div className="p-12 mt-8.6m">
-      <h2 className="text-2xl	mb-6">Shop</h2>
+      <h2 className="text-2xl	mb-6">Inventory</h2>
       <div>
         <ListCardForShopAdmintStatus
           itemTotalData={itemTotalData}

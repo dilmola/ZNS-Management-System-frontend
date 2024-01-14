@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Button from "../../components/common/SaveButton";
 import showToast from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 const columns = [
   { header: "No", accessor: "id" },
@@ -17,6 +18,7 @@ const ClientCheckOut = () => {
   const { userId } = useParams();
   const [beforeDepositPrice, setBeforeDepositPrice] = useState(0); // Initialize with default value
   const [finalTotalPrice, setFinalTotalPrice] = useState(0); // Initialize with default value
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -57,6 +59,7 @@ const ClientCheckOut = () => {
         shop_item_list_id: tableData.map((item) => item.shop_item_list_id),
         // Add other data if needed
       };
+      window.location.href = 'http://127.0.0.1:8000/toyyibpay';
 
       await ApiService.update(updateProfileData, updateData);
       console.log("successful");
@@ -90,7 +93,7 @@ const ClientCheckOut = () => {
             RM {beforeDepositPrice} - RM 10.00
           </p>
           <p className="text-lg	 opacity-100">RM {finalTotalPrice}</p>
-        </div>
+        </div>http://127.0.0.1:8000/toyyibpay
       </div>
       <ToastContainer />
     </div>
