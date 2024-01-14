@@ -5,6 +5,7 @@ import { useReactToPrint } from "react-to-print";
 import ApiService from "../../API/ApiService";
 
 import PrintQuotation from "../../components/common/PrintQuotation";
+import { useParams } from "react-router-dom"; // Import useParams
 
 const Quotation = () => {
   const [formFields, setFormFields] = useState([]);
@@ -13,29 +14,11 @@ const Quotation = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);
   const [selectedDropdownValue, setSelectedDropdownValue] = useState(""); // Step 1: State for dropdown
   const [options, setOptions] = useState([]);
+  const { userId } = useParams(); // Get user_id from URL params
 
   const handleDropdownChange = (value) => {
     setSelectedDropdownValue(value); // Step 2: Handle dropdown change
   };
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch("your_api_endpoint");
-
-      const data = await response.json();
-      console.log("Fetched data:", data);
-
-      return data;
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      // Handle the error or rethrow it
-      throw error;
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleAddField = () => {
     setFormFields([
@@ -60,10 +43,15 @@ const Quotation = () => {
     const updatedFields = [...formFields];
     updatedFields[index][field] = value;
 
-    if (field === "Kuantiti" || field === "Harga") {
-      const kuantiti = parseFloat(updatedFields[index]["Kuantiti"]) || 0;
-      const harga = parseFloat(updatedFields[index]["Harga"]) || 0;
-      updatedFields[index]["Jumlah"] = (kuantiti * harga).toFixed(2);
+    if (
+      field === "quantity_appointment_items" ||
+      field === "price_appointment_items"
+    ) {
+      const quantity =
+        parseFloat(updatedFields[index]["quantity_appointment_items"]) || 0;
+      const price =
+        parseFloat(updatedFields[index]["price_appointment_items"]) || 0;
+      updatedFields[index]["Jumlah"] = (quantity * price).toFixed(2);
     }
 
     setFormFields(updatedFields);
@@ -75,11 +63,30 @@ const Quotation = () => {
 
   const handleSaveQuotation = async () => {
     try {
-      const updateProfileData = `new/appointment/payment/item/`;
-      const response = await ApiService.update(updateProfileData, {
-        fields: formFields,
-      });
-      console.log("Quotation saved successfully", response.data);
+      const requestData = formFields.map(
+        ({
+          details_appointment_items,
+          quantity_appointment_items,
+          price_appointment_items,
+        }) => ({
+          details_appointment_items,
+          quantity_appointment_items,
+          price_appointment_items,
+          Jumlah: (
+            parseFloat(quantity_appointment_items) *
+            parseFloat(price_appointment_items)
+          ).toFixed(2),
+        })
+      );
+
+      // Assuming 'new/appointment/payment/item/' is your correct endpoint
+      const updateProfileData = `new/appointment/payment/item/${userId}`;
+
+      const response = await ApiService.post(updateProfileData, requestData);
+
+      console.log("API Response:", response);
+
+      console.log("Quotation saved successfully");
     } catch (error) {
       console.error("Error saving quotation", error);
     }
@@ -88,7 +95,7 @@ const Quotation = () => {
   return (
     <div className="p-12 mt-8.6m">
       <div className="p-4">
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
             Select an option
           </label>
@@ -104,7 +111,7 @@ const Quotation = () => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
         <div className="flex justify-between mb-12">
           <button
             type="submit"
@@ -120,7 +127,6 @@ const Quotation = () => {
             onClick={handlePrint}
           >
             Print
-            {/* <img className="ml-12 w-3.5 h-3.5" alt="Submit Icon" /> */}
           </button>
         </div>
         {isTableVisible && (
@@ -130,9 +136,9 @@ const Quotation = () => {
                 <tr>
                   <th className="font-medium w-8 p-2">Bil</th>
                   <th className="font-medium p-2">Perkara</th>
-                  <th className="font-medium p-2 w-20">Kuantiti</th>
-                  <th className="font-medium p-2 w-20">Harga</th>
-                  <th className="font-medium p-2 w-20">Jumlah</th>
+                  <th className="font-medium p-2 w-20">Quantity</th>
+                  <th className="font-medium p-2 w-20">Price</th>
+                  <th className="font-medium p-2 w-20">Total</th>
                   <th className="font-medium p-2 w-20">Actions</th>
                 </tr>
               </thead>
@@ -168,7 +174,7 @@ const Quotation = () => {
                     </td>
                     <td>
                       <input
-                        name="Kuantiti"
+                        name="Quantity"
                         type="number"
                         value={field.quantity_appointment_items}
                         onChange={(e) =>
@@ -183,7 +189,7 @@ const Quotation = () => {
                     </td>
                     <td>
                       <input
-                        name="Harga"
+                        name="Price"
                         type="text"
                         value={
                           isNaN(parseFloat(field.price_appointment_items))
@@ -204,12 +210,10 @@ const Quotation = () => {
                     </td>
                     <td>
                       <input
-                        name="Jumlah"
+                        name="Total"
                         type="text"
                         value={field.Jumlah}
-                        onChange={(e) =>
-                          handleFieldChange(index, "Jumlah", e.target.value)
-                        }
+                        readOnly
                         className="w-full bg-transparent border-none rounded p-2 text-center focus:outline-none focus:border-TerraCotta focus:ring-TerraCotta focus:ring-inset"
                       />
                     </td>

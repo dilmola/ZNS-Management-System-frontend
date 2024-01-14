@@ -30,7 +30,9 @@ const Table = ({ data, columns, onRowClick }) => {
               key={rowIndex}
               onClick={onRowClick ? () => onRowClick(row) : null}
               className={`px-5 py-3 ${
-                onRowClick ? "cursor-pointer rounded-full transition-colors hover:bg-[#f4f6f3]" : "cursor-auto	rounded-full transition-colors hover:bg-[#f4f6f300]"
+                onRowClick
+                  ? "cursor-pointer rounded-full transition-colors hover:bg-[#f4f6f3]"
+                  : "cursor-auto	rounded-full transition-colors hover:bg-[#f4f6f300]"
               } `}
             >
               {columns.map((column, columnIndex) => {
@@ -62,6 +64,18 @@ const Table = ({ data, columns, onRowClick }) => {
                       }`}
                     >
                       {row[column.accessor]}
+                    </td>
+                  );
+                } else if (
+                  column.accessor === "second_appointment_status_Sec"
+                ) {
+                  return (
+                    <td className="px-5 py-3">
+                      {row["second_appointment_status_Sec"] !== null
+                        ? // Display the value when it's not null
+                          row["second_appointment_status_Sec"]
+                        : // Display a specific label when the value is null
+                          "Not Send"}
                     </td>
                   );
                 } else if (column.accessor === "contractor_fullname") {

@@ -32,7 +32,7 @@ const PrintInvoice = React.forwardRef(
             ELECTRICAL WORKS
           </h2>
           <h2 className="text-md font-medium mb-1 text-center">
-            Tingkat 3,Sub lot 2,Block F,Fasa 3, Demak Laut Commercial Centre{" "}
+            Tingkat 3,Sub lot 2,Block F,Fasa 3, Demak Laut Commercial Centre
             <br />
             Jalan Bako,93050, Kuching,Sarawak.
           </h2>
@@ -72,9 +72,7 @@ const PrintInvoice = React.forwardRef(
                   <td colSpan="3" className=" border p-2">
                     Deposit
                   </td>
-                  <td className="border p-2">
-                    10.00
-                  </td>
+                  <td className="border p-2">10.00</td>
                 </tr>
                 <tr>
                   <td colSpan="3" className=" border p-2">

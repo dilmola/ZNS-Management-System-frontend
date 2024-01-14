@@ -38,7 +38,7 @@ const Body = () => {
       const responseAppointmentList = await ApiService.get(
         endpointAppointmentList
       );
-      const appointmentsData = responseAppointmentList.da || [];
+      const appointmentsData = responseAppointmentList.listuser || [];
 
       const transformedData = appointmentsData.map((appointment, index) => ({
         id: index + 1,
@@ -46,7 +46,6 @@ const Body = () => {
         date_appointment: appointment.date_appointment,
         appointment_status: appointment.appointment_status,
         add_appointment_date: appointment.add_appointment_date,
-
         client_fullname: appointment.client_fullname,
         remark: appointment.remark,
         address: appointment.address,
@@ -93,13 +92,14 @@ const Body = () => {
           />
         </div>
       </div>
-
+      {/* 
       <h2 className="text-2xl	mb-6">Payment (in progress)</h2>
       <div>
         <ListCardForPaymentStatus />
-      </div>
+      </div> */}
 
       <h2 className="text-2xl	mb-6">Appointment</h2>
+
       <div className="rounded-lg border-2	border-black ">
         <Table data={tableData} columns={columns} onRowClick={handleRowClick} />
       </div>

@@ -190,7 +190,7 @@ const Sidebar = ({ setActiveContent, id }) => {
                                   </div>
                                   <span className="ml-8">Manage Shop</span>
                                 </a>
-                              </li>                              
+                              </li>
                               <li className="transition-opacity duration-300 ease-in">
                                 <a
                                   href="#"
@@ -254,8 +254,23 @@ const Sidebar = ({ setActiveContent, id }) => {
                     </ul>
                   </>
                 )}
-
-                <ul>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => handleMenuClick("appointment")}
+                    className="flex items-center p-3 text-slate-200	rounded-lg group hover:bg-gray-700"
+                  >
+                    <div className="w-auto">
+                      <img
+                        className="h-6 mr-3 sm:h-5"
+                        src={appointment}
+                        alt="appointment"
+                      />
+                    </div>
+                    <span className="ml-8">Appointment</span>
+                  </a>
+                </li>
+                {/* <ul>
                   <li>
                     <a
                       href="#"
@@ -334,7 +349,7 @@ const Sidebar = ({ setActiveContent, id }) => {
                       </li>
                     </>
                   )}
-                </ul>
+                </ul> */}
                 {/* <li>
                   <a
                     href="#"

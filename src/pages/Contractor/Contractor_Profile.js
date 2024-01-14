@@ -144,7 +144,7 @@ const ContractorProfile = () => {
             />
           </div>
           <hr className="p-2"></hr>
-          <div className="mb-6">
+          <div className="mb-6 relative">
             Password
             <div className="relative">
               <InputField
@@ -153,15 +153,16 @@ const ContractorProfile = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="password"
                 type={showPassword ? "text" : "password"}
-              />
+              />       
               <div
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+                className="absolute top-3	 right-2 cursor-pointer"
                 onClick={handleTogglePasswordVisibility}
               >
                 {showPassword ? <FaLockOpen /> : <FaLock />}
               </div>
             </div>
           </div>
+
           <div className="flex justify-end mt-12">
             <ReusableButton
               onClick={handleCancel}

@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Registration from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Client_MainContainer from "../src/pages/Client/Client_MainContainer";
@@ -14,6 +19,7 @@ function App() {
     <div className="text-sm font-custom selection:bg-gray-800 selection:text-white">
       <Router>
         <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/client/:userId" element={<Client_MainContainer />} />
@@ -23,9 +29,7 @@ function App() {
             element={<Contractor_MainContainer />}
           />
           <Route path="*" element={<NoMatch />} />
-
           <Route path="/test" element={<ImageUploadForm />} />
-
         </Routes>
       </Router>
     </div>

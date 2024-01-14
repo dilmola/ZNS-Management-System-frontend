@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import logoBlack from "../../img/logoBlack.png";
 
-const PrintQuotation = React.forwardRef(({ fields }, ref) => {
+const PrintQuotation = React.forwardRef(({ fields, appointmentsData }, ref) => {
   const currentDate = new Date().toLocaleDateString();
 
   // Calculate the total amount
@@ -37,12 +37,15 @@ const PrintQuotation = React.forwardRef(({ fields }, ref) => {
 
       <div className="py-10 px-16">
         <div className="text-left mb-6">Tarikh: {currentDate}</div>
-        <div className="text-left mb-8">No 27 tingkat perpaduan 22</div>
+        <div className="w-52">
+          <div className="text-left mb-8">
+            {/* {appointmentsData.appointment_address} */}
+          </div>
+        </div>
         <div className="text-left mb-8">
           Tuan, <br />
           PER: SEBUTHARGA
         </div>
-
         <table className="table-auto w-full">
           <thead>
             <tr>
@@ -83,7 +86,6 @@ const PrintQuotation = React.forwardRef(({ fields }, ref) => {
             </tr>
           </tfoot>
         </table>
-
         <div className="text-left my-20">Sekian terima kasih,</div>
         <div className="text-left mb-2">Yang benar,</div>
         <div className="text-left mb-2">

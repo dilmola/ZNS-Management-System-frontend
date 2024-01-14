@@ -9,8 +9,12 @@ const ApiService = {
         `${ApiService.baseURL}/${endpoint}`,
         data
       );
+      console.log("API Response:", response.data); // Log the response data for debugging
+
       return response.data;
     } catch (error) {
+      console.error(`Error posting data to API:`, error);
+
       throw new Error(`Error fetching data from API: ${error.message}`);
     }
   },

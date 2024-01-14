@@ -20,7 +20,7 @@ const CardTypeOne = ({ title, description, icon, total }) => (
     <div className="mb-12">
       <h2 className="text-4xl absolute top-0 left-0 p-5">
         {total}
-        <small className="text-gray-500 text-sm">item</small>
+        <small className="text-gray-500 text-sm"></small>
       </h2>
       <img
         className="absolute top-0 right-0 p-5 h-20"
@@ -79,13 +79,13 @@ const ListCardForUserStatus = ({ userTotalData, contractorTotalData }) => (
 const ListCardForAppointmentClientStatus = () => (
   <div className="grid grid-cols-2 gap-4 mb-20">
     <CardTypeOne
-      title="Accepted"
-      description="Accepted"
+      title="First Appointment"
+      description="All first appointment list"
       icon={acceptedAppointmentIcon}
     />
     <CardTypeOne
-      title="Pending"
-      description="Pending"
+      title="Second Appointment"
+      description="All second appointment list"
       icon={pendingAppointmentIcon}
     />
   </div>

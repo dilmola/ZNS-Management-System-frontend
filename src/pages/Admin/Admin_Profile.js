@@ -158,7 +158,7 @@ const AdminProfile = () => {
                 type={showPassword ? "text" : "password"}
               />
               <div
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+                className="absolute top-3	 right-2 cursor-pointer"
                 onClick={handleTogglePasswordVisibility}
               >
                 {showPassword ? <FaLockOpen /> : <FaLock />}
