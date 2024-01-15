@@ -10,7 +10,10 @@ import axios from "axios";
 import ApiService from "../../../API/ApiService.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { showToast, showToastWithoutReload } from "../../../components/common/Toast.js";
+import {
+  showToast,
+  showToastWithoutReload,
+} from "../../../components/common/Toast.js";
 
 const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
   const [image, setImage] = useState(null);
@@ -60,12 +63,14 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
     itemListData.append("name_of_item", nameOfItem);
     itemListData.append("description_item", descriptionItem);
     itemListData.append("quantity_item", quantityItem);
-    //console.log(itemListData);
+    for (const [key, value] of itemListData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
     try {
       const updateProfileData = `update/shop/item/lists/${selectedItem.item_id}`;
       await ApiService.update(updateProfileData, itemListData);
-      //console.log("successful");
-      showToast("👍 Successful Submit!");
+      console.log("successful");
+      // showToast("👍 Successful Submit!");
     } catch (error) {
       console.error("Error updating status:", error);
     }
@@ -74,6 +79,17 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
+  };
+
+  const handleDelete = async () => {
+    try {
+      const deleteItemData = `delete/shop/item/lists/${selectedItem.item_id}`;
+      await ApiService.delete(deleteItemData);
+      showToast("👍 Item deleted successfully!");
+      // closeModal(); // Close the modal after successful deletion
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
   };
 
   return (
@@ -147,7 +163,7 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
                       label="Delete item"
                       color="DeleteButton"
                       src={deleteIcon}
-                      //   onClick={handleDelete}
+                      onClick={handleDelete}
                     />
                   </div>
                   <div>

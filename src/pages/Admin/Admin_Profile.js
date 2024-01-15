@@ -76,7 +76,7 @@ const AdminProfile = () => {
       const updateProfileData = `update/data/my-profile/${userId}`;
       await ApiService.update(updateProfileData, userProfileData);
       //console.log("successful");
-      // showToast("👍 Successful Submit!");
+      showToast("👍 Successful Submit!");
     } catch (error) {
       console.error("Error updating status:", error);
     }

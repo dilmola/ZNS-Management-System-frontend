@@ -45,6 +45,16 @@ const ApiService = {
     }
   },
 
+  delete: async (endpoint) => {
+    try {
+      const response = await axios.delete(`${ApiService.baseURL}/${endpoint}`);
+      console.log("API Response Data:", response.data);
+      return response.data;
+    } catch (error) {
+      throw new Error(`Error deleting data via API: ${error.message}`);
+    }
+  },
+  
   getUserInfo: async (userId) => {
     try {
       const response = await axios.get(`${ApiService.baseURL}/user/${userId}`);
