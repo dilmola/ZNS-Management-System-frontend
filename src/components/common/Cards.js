@@ -138,7 +138,7 @@ const CardForShop = ({ title, description, imgItem, price, onClick }) => (
 );
 
 const ListCardForShop = ({ sampleData, onRowClick }) => {
-  console.log(sampleData);
+  //console.log(sampleData);
 
   return (
     <div className="grid grid-cols-3 gap-4 mb-20">

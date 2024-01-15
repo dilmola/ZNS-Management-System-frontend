@@ -29,11 +29,11 @@ const ModalAddContractor = ({ isOpen, closeModal }) => {
         contractorData
       );
 
-      console.log("Full API Response:", response); // Log the entire response
+      //console.log("Full API Response:", response); // Log the entire response
 
       // Check if contractorData exists in the response
       if (response && response.contractorData) {
-        console.log("Contractor Data:", response.contractorData);
+        //console.log("Contractor Data:", response.contractorData);
         showToast("👍 Successful Submit!");
         closeModal();
       } else {

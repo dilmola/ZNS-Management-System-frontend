@@ -40,7 +40,7 @@ const Sidebar = ({ setActiveContent, id }) => {
         // Assuming users_type_id is present in userInfo
         const users_type_id = userInfo.user.users_type_id;
 
-        console.log("User Type ID:", users_type_id);
+        //console.log("User Type ID:", users_type_id);
 
         if (users_type_id === 1) {
           setUserType("Admin");
@@ -64,7 +64,7 @@ const Sidebar = ({ setActiveContent, id }) => {
 
   const handleMenuClick = (menuType) => {
     if (users_type_id === 1) {
-      console.log("User Type 1 - Setting ActiveContent to admin");
+      //console.log("User Type 1 - Setting ActiveContent to admin");
       if (menuType === "dashboard") {
         setActiveContent("adminDashboard");
       } else if (menuType === "profile") {
@@ -75,7 +75,7 @@ const Sidebar = ({ setActiveContent, id }) => {
         setActiveContent("adminAppointment");
       }
     } else if (users_type_id === 2) {
-      console.log("User Type 2 - Setting ActiveContent to contractor");
+      //console.log("User Type 2 - Setting ActiveContent to contractor");
       if (menuType === "dashboard") {
         setActiveContent("contractorDashboard");
       } else if (menuType === "profile") {
@@ -84,7 +84,7 @@ const Sidebar = ({ setActiveContent, id }) => {
         setActiveContent("contractorQuotation");
       }
     } else if (users_type_id === 3) {
-      console.log("User Type 3 - Setting ActiveContent to client");
+      //console.log("User Type 3 - Setting ActiveContent to client");
       if (menuType === "dashboard") {
         setActiveContent("clientDashboard");
       } else if (menuType === "profile") {
@@ -95,7 +95,7 @@ const Sidebar = ({ setActiveContent, id }) => {
         setActiveContent("clientAppointment");
       }
     } else {
-      console.log("Unknown User Type - No ActiveContent set");
+      //console.log("Unknown User Type - No ActiveContent set");
     }
   };
 

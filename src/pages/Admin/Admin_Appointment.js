@@ -27,7 +27,7 @@ const AdminAppointment = () => {
     setSelectedAppointmentRowData(row);
 
     try {
-      console.log("Clicked row:", row); // Log the row object to check its structure
+      //console.log("Clicked row:", row); // Log the row object to check its structure
 
       const docIdResponse = await ApiService.get(
         `get/data/document/detail/second/appointment/client/${
@@ -36,16 +36,14 @@ const AdminAppointment = () => {
         {}
       );
       const docIdData = docIdResponse.newAppointmentPaymentOfItemForDoc || [];
-      console.log("Document details:", docIdResponse);
+      //console.log("Document details:", docIdResponse);
       setPrintQuotationDetails(docIdData);
 
       // Retrieve sec_appointment_id2 from the clicked row
       const invoiceAppointmentId = row && row.sec_appointment_id2;
-        console.log(invoiceAppointmentId);
-
+      //console.log(invoiceAppointmentId);
 
       await submitInvoiceToClient(row, invoiceAppointmentId);
-
     } catch (error) {
       console.error("Error fetching document details:", error);
     }
@@ -53,15 +51,13 @@ const AdminAppointment = () => {
 
   const submitInvoiceToClient = async (row, invoiceAppointmentId) => {
     try {
- 
-        const response = await ApiService.update(
-          `update/client/required/invoice/second/appointment/client/${invoiceAppointmentId}`
-        );
-        console.log("Invoice submission response:", response);
-     
-        console.error("invoiceAppointmentId is undefined");
-      }
-     catch (error) {
+      const response = await ApiService.update(
+        `update/client/required/invoice/second/appointment/client/${invoiceAppointmentId}`
+      );
+      //console.log("Invoice submission response:", response);
+
+      console.error("invoiceAppointmentId is undefined");
+    } catch (error) {
       console.error("Error submitting invoice:", error);
     }
   };
@@ -102,7 +98,7 @@ const AdminAppointment = () => {
       console.error("Error fetching data:", error);
     }
   };
-  console.log("Table Data:", tableData);
+  //console.log("Table Data:", tableData);
 
   useEffect(() => {
     fetchData();

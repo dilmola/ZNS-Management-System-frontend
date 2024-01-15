@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 const Contractor_MainContainer = () => {
   const [activeContent, setActiveContent] = useState("contractorDashboard");
   const { userId } = useParams();
-  console.log("User ID:", userId);
+  //console.log("User ID:", userId);
 
   const handleSetActiveContent = (content) => {
     setActiveContent(content);
@@ -25,7 +25,6 @@ const Contractor_MainContainer = () => {
           {activeContent === "contractorDashboard" && <ContractorDashboard />}
           {activeContent === "contractorProfile" && <ContractorProfile />}
           {activeContent === "contractorQuotation" && <ContractorQuotation />}
-
         </div>
       </div>
     </div>

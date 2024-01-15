@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Table from "../../components/common/Table/Table_Component";
 import PrintQuotationAppointment from "../../components/common/PrintQuotationAppointment";
 import PrintAppointmentInvoice from "../../components/common/PrintAppointmentInvoice";
-
+import showToast from "../../components/common/Toast.js";
+import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import { ListCardForPaymentStatus } from "../../components/common/Cards";
@@ -55,7 +56,7 @@ const ClientDashboard = () => {
         {}
       );
       const docIdData = docIdResponse.newAppointmentPaymentOfItemForDoc || [];
-      console.log(docIdResponse);
+      //console.log(docIdResponse);
       setPrintQuotationDetails(docIdData);
       setPrintQuotationDetails2(docIdData);
     } catch (error) {
@@ -90,8 +91,9 @@ const ClientDashboard = () => {
         // Add any necessary data to the request body
         // For example: appointmentId, additional information
       });
+      showToast("👍 Successful Submit!");
 
-      console.log(response);
+      //console.log(response);
     } catch (error) {
       console.error(
         `Error ${actionType}ing appointment:`,
@@ -156,7 +158,7 @@ const ClientDashboard = () => {
       console.error("Error fetching data:", error);
     }
   };
-  console.log("Table Data:", tableData);
+  //console.log("Table Data:", tableData);
 
   useEffect(() => {
     fetchData();
@@ -177,12 +179,10 @@ const ClientDashboard = () => {
       <div>
         <ListCardForPaymentStatus />
       </div> */}
-
       <h2 className="text-2xl	mb-6">First Appointment </h2>
       <div className="rounded-lg border-2 border-black ">
         <Table data={tableData} columns={columns} onRowClick={handleRowClick} />
       </div>
-
       <h2 className="text-2xl	mt-12 mb-6">Second Appointment </h2>
       <div className="rounded-lg border-2 border-black ">
         <Table
@@ -191,7 +191,6 @@ const ClientDashboard = () => {
           onRowClick={handleSecondAppointmentRowClick}
         />
       </div>
-
       <CustomModal
         isOpen={isModalOpen}
         closeModal={closeModal}
@@ -249,7 +248,6 @@ const ClientDashboard = () => {
           )
         }
       />
-
       <CustomModal
         isOpen={isSecAppointmentModalOpen}
         closeModal={closeModal}
@@ -338,7 +336,8 @@ const ClientDashboard = () => {
             </div>
           )
         }
-      />
+      />{" "}
+      <ToastContainer />
     </div>
   );
 };

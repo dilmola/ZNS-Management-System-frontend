@@ -21,7 +21,7 @@ const DatePicker = ({ setFormData, formData }) => {
   const [show, setShow] = useState(false);
 
   const handleChange1 = (selectedDate) => {
-    console.log(selectedDate);
+    //console.log(selectedDate);
     const formattedDate = selectedDate.toISOString().slice(0, 10);
 
     setFormData((prevData) => ({

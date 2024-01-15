@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import Button from "../../components/common/SaveButton";
 import showToast from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   { header: "No", accessor: "id" },
@@ -46,7 +46,7 @@ const ClientCheckOut = () => {
       console.error("Error fetching data:", error);
     }
   };
-  console.log("Table Data:", tableData);
+  //console.log("Table Data:", tableData);
 
   useEffect(() => {
     fetchData();
@@ -59,10 +59,10 @@ const ClientCheckOut = () => {
         shop_item_list_id: tableData.map((item) => item.shop_item_list_id),
         // Add other data if needed
       };
-      window.location.href = 'http://127.0.0.1:8000/toyyibpay';
+      window.location.href = "http://127.0.0.1:8000/toyyibpay";
 
       await ApiService.update(updateProfileData, updateData);
-      console.log("successful");
+      //console.log("successful");
       showToast("👍 Successful Checkout!");
     } catch (error) {
       console.error("Error updating status:", error);
@@ -93,7 +93,8 @@ const ClientCheckOut = () => {
             RM {beforeDepositPrice} - RM 10.00
           </p>
           <p className="text-lg	 opacity-100">RM {finalTotalPrice}</p>
-        </div>http://127.0.0.1:8000/toyyibpay
+        </div>
+        {/* http://127.0.0.1:8000/toyyibpay */}
       </div>
       <ToastContainer />
     </div>

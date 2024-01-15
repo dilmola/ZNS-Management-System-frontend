@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 const Cliet_MainContainer = () => {
   const [activeContent, setActiveContent] = useState("clientDashboard");
   const { userId } = useParams();
-  console.log("User ID:", userId);
+  //console.log("User ID:", userId);
 
   const handleSetActiveContent = (content) => {
     setActiveContent(content);

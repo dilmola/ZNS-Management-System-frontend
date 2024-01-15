@@ -37,7 +37,7 @@ const ImageUploadForm = () => {
       });
 
       if (response.ok) {
-        console.log(
+        //console.log(
           editingItemId
             ? 'Item edited successfully'
             : 'Image uploaded successfully'
@@ -79,7 +79,7 @@ const ImageUploadForm = () => {
       );
 
       if (response.ok) {
-        console.log("Item deleted successfully");
+        //console.log("Item deleted successfully");
         // Refresh the list of items after deleting
         fetchShopItems();
       } else {

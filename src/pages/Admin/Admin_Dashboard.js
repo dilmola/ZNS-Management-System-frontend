@@ -52,7 +52,7 @@ const Body = () => {
         appointment_type: appointment.appointment_type,
       }));
       setTableData(transformedData);
-      console.log(transformedData);
+      //console.log(transformedData);
 
       const endpointTotalUserListAdmin = "view/users-listforadmin";
       const responseTotalUser = await ApiService.get(
@@ -61,7 +61,7 @@ const Body = () => {
       const userTotalData = responseTotalUser.listuser || [];
 
       setUserTotalData(userTotalData);
-      console.log("User Data:", userTotalData);
+      //console.log("User Data:", userTotalData);
 
       const endpointTotalContractorListAdmin = "view/contractors-listforadmin";
       const responseTotalContractor = await ApiService.get(
@@ -70,12 +70,12 @@ const Body = () => {
       const ContractorTotalData = responseTotalContractor.listuser || [];
 
       setContractorTotalData(ContractorTotalData);
-      console.log("User Data:", ContractorTotalData);
+      //console.log("User Data:", ContractorTotalData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  console.log("Table Data:", tableData);
+  //console.log("Table Data:", tableData);
 
   useEffect(() => {
     fetchData();

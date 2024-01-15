@@ -6,7 +6,8 @@ import ApiService from "../../API/ApiService";
 
 import PrintQuotation from "../../components/common/PrintQuotation";
 import { useParams } from "react-router-dom"; // Import useParams
-
+import showToast from "../../components/common/Toast.js";
+import { ToastContainer } from "react-toastify";
 const Quotation = () => {
   const [formFields, setFormFields] = useState([]);
   const componentRef = useRef();
@@ -83,10 +84,11 @@ const Quotation = () => {
       const updateProfileData = `new/appointment/payment/item/${userId}`;
 
       const response = await ApiService.post(updateProfileData, requestData);
+      showToast("👍 Successful Checkout!");
 
-      console.log("API Response:", response);
+      //console.log("API Response:", response);
 
-      console.log("Quotation saved successfully");
+      //console.log("Quotation saved successfully");
     } catch (error) {
       console.error("Error saving quotation", error);
     }
@@ -242,6 +244,7 @@ const Quotation = () => {
           <PrintQuotation fields={formFields} ref={componentRef} />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

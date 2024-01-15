@@ -40,7 +40,7 @@ const ModalAddShop = ({ isOpen, closeModal, addItem }) => {
       );
 
       if (response.ok) {
-        console.log("Image uploaded successfully");
+        //console.log("Image uploaded successfully");
       } else {
         console.error("Error uploading image:", response.statusText);
       }

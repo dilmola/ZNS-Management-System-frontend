@@ -49,7 +49,7 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
   };
 
   const handleSubmit = async (e) => {
-    console.log("handleSubmit called");
+    //console.log("handleSubmit called");
 
     e.preventDefault();
 
@@ -58,11 +58,11 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
     itemListData.append("name_of_item", nameOfItem);
     itemListData.append("description_item", descriptionItem);
     itemListData.append("quantity_item", quantityItem);
-    console.log(itemListData);
+    //console.log(itemListData);
     try {
       const updateProfileData = `update/shop/item/lists/${selectedItem.item_id}`;
       await ApiService.update(updateProfileData, itemListData);
-      console.log("successful");
+      //console.log("successful");
       showToast("👍 Successful Submit!");
     } catch (error) {
       console.error("Error updating status:", error);

@@ -80,14 +80,15 @@ const ContractorDashboard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit button clicked");
+    //console.log("Submit button clicked");
     try {
       const response = await ApiService.post("create/second/appointment/", {
         date_appointment: selectedDate,
         document_id: selectedCategory,
         appoinment_first_id: secondAppointmentRowData.appointment_id_Sec,
       });
-      console.log("Form data submitted successfully:", response);
+      //console.log("Form data submitted successfully:", response);
+      showToast("👍 Successful Submit!");
 
       // showToast('👍 Successful Submit!');
     } catch (error) {
@@ -95,19 +96,21 @@ const ContractorDashboard = () => {
 
       showToast("Failed to create appointment. Please try again.");
     }
-    console.log("Submitting data:", selectedDate, selectedCategory);
+    //console.log("Submitting data:", selectedDate, selectedCategory);
   };
 
   const handleSubmitInvoice = async (e) => {
     e.preventDefault();
-    console.log("Submit button clicked");
+    //console.log("Submit button clicked");
     try {
       const response = await ApiService.post("create/second/appointment/", {
         date_appointment: selectedDate,
         document_id: selectedCategory,
         appoinment_first_id: secondAppointmentRowData.appointment_id_Sec,
+        
       });
-      console.log("Form data submitted successfully:", response);
+      //console.log("Form data submitted successfully:", response);
+      showToast("👍 Successful Submit!");
 
       // showToast('👍 Successful Submit!');
     } catch (error) {
@@ -115,7 +118,7 @@ const ContractorDashboard = () => {
 
       showToast("Failed to create appointment. Please try again.");
     }
-    console.log("Submitting data:", selectedDate, selectedCategory);
+    //console.log("Submitting data:", selectedDate, selectedCategory);
   };
 
   const handleAcceptClick = async () => {
@@ -143,10 +146,10 @@ const ContractorDashboard = () => {
       };
       const endpointupdatestatus = `update/second/appointment/done/${updatedData.appointment_id2}`;
       await ApiService.update(endpointupdatestatus, updatedData);
-      // showToast("👍 Successful Submit!");
+      showToast("👍 Successful Submit!");
 
       // closeModal();
-      console.log(updatedData);
+      //console.log(updatedData);
       fetchData();
     } catch (error) {
       console.error("Error updating status:", error);
@@ -177,7 +180,7 @@ const ContractorDashboard = () => {
         appointment_type: appointment.appointment_type,
       }));
       setTableData(transformedData);
-      console.log(transformedData);
+      //console.log(transformedData);
 
       const endpointAppointmentList2 = `ViewAcceptAppointmentContractor/${userId}`;
       const responseAppointmentList2 = await ApiService.get(
@@ -199,7 +202,7 @@ const ContractorDashboard = () => {
         appointment_type2: appointment2.appointment_type,
       }));
       setTableData2(transformedData2);
-      console.log(transformedData2);
+      //console.log(transformedData2);
 
       const endpointSecondAppointmentList = `view/list/second/appointment/contractor/${userId}`;
       const responseSecondAppointmentList = await ApiService.get(
@@ -207,7 +210,7 @@ const ContractorDashboard = () => {
       );
       const SecAppointmentListData =
         responseSecondAppointmentList.appointment || [];
-      console.log(SecAppointmentListData);
+      //console.log(SecAppointmentListData);
       const transformedSecAppointmentData2 = SecAppointmentListData.map(
         (SecAppointment, index) => ({
           id: index + 1,
@@ -227,7 +230,7 @@ const ContractorDashboard = () => {
         })
       );
       setTableSecAppointmentData(transformedSecAppointmentData2);
-      console.log(transformedSecAppointmentData2);
+      //console.log(transformedSecAppointmentData2);
 
       const endpointDocumentIdData = `view/list/document/detail/second/appointment/contractor/${userId}`;
       const responseDocumentIdData = await ApiService.get(
@@ -247,12 +250,12 @@ const ContractorDashboard = () => {
       }));
 
       setDocumentOptions(documentOptions);
-      console.log(uniqueDocumentIds);
+      //console.log(uniqueDocumentIds);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  console.log("Table Data:", tableData2);
+  //console.log("Table Data:", tableData2);
 
   useEffect(() => {
     fetchData();

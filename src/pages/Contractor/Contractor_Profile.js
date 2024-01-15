@@ -40,7 +40,7 @@ const ContractorProfile = () => {
       const getProfileData = `get/data/my-profile/${userId}`;
       const responseProfileData = await ApiService.get(getProfileData);
       const userProfile = responseProfileData.user || {};
-      console.log(userProfile);
+      //console.log(userProfile);
       setFullname(userProfile.fullname);
       setUsername(userProfile.username);
       setEmail(userProfile.email);
@@ -69,7 +69,7 @@ const ContractorProfile = () => {
 
       const updateProfileData = `update/data/my-profile/${userId}`;
       await ApiService.update(updateProfileData, userProfileData);
-      console.log("succesful");
+      //console.log("succesful");
       showToast("👍 Successful Submit!");
     } catch (error) {
       console.error("Error updating status:", error);
@@ -153,7 +153,7 @@ const ContractorProfile = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="password"
                 type={showPassword ? "text" : "password"}
-              />       
+              />
               <div
                 className="absolute top-3	 right-2 cursor-pointer"
                 onClick={handleTogglePasswordVisibility}

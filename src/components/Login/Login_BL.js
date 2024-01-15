@@ -17,21 +17,19 @@ const LoginComponent = () => {
 
     if (email && password) {
       try {
-        const response = await ApiService.post("login", { email, password });   
-        console.log("Login Successfullyyyy", response.data);
-              const userType = response.data.users_type_id;
-        console.log(userType);
+        const response = await ApiService.post("login", { email, password });
+        //console.log("Login Successfullyyyy", response.data);
+        const userType = response.data.users_type_id;
+        //console.log(userType);
 
-        const userId = response.data.id; 
-        console.log(userId);
+        const userId = response.data.id;
+        //console.log(userId);
 
         setEmailError("");
         setPasswordError("");
         setInvalidError("");
         setLoading(true);
 
-      
-      
         if (userType === 1) {
           navigate(`/admin/${userId}`);
         } else if (userType === 2) {

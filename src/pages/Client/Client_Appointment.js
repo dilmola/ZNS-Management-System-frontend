@@ -70,10 +70,10 @@ const ClientAppointment = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit button clicked");
+    //console.log("Submit button clicked");
     try {
       const response = await ApiService.post("createappointment", formData);
-      console.log("Form data submitted successfully:", response.data);
+      //console.log("Form data submitted successfully:", response.data);
 
       showToast("👍 Successful Submit!");
     } catch (error) {
@@ -88,7 +88,7 @@ const ClientAppointment = () => {
       const getProfileData = `get/data/my-profile/${userId}`;
       const responseProfileData = await ApiService.get(getProfileData);
       const userProfile = responseProfileData.user || {};
-      console.log(userProfile);
+      //console.log(userProfile);
       setFullname(userProfile.fullname);
       setEmail(userProfile.email);
       setPhone(userProfile.phone);

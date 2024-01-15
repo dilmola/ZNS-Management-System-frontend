@@ -65,7 +65,7 @@ const AdminShop = () => {
         image_item: item.image_item,
       }));
       setTableData(transformedData);
-      console.log(transformedData);
+      //console.log(transformedData);
 
       const endpointTotalUserListAdmin = "view/total/available/item";
       const responseTotalUser = await ApiService.get(
@@ -74,7 +74,7 @@ const AdminShop = () => {
       const userTotalData = responseTotalUser.totalItem || [];
 
       setItemTotalData(userTotalData);
-      console.log("User Data:", userTotalData);
+      //console.log("User Data:", userTotalData);
 
       const endpointTotalContractorListAdmin = "view/total/out-of-stock/item";
       const responseTotalContractor = await ApiService.get(
@@ -83,12 +83,12 @@ const AdminShop = () => {
       const ContractorTotalData = responseTotalContractor.totalItem || [];
 
       setOutOfStockTotalData(ContractorTotalData);
-      console.log("User Data:", ContractorTotalData);
+      //console.log("User Data:", ContractorTotalData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  console.log("Table Data:", tableData);
+  //console.log("Table Data:", tableData);
 
   useEffect(() => {
     fetchData();

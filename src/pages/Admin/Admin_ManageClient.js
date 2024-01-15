@@ -9,7 +9,6 @@ const columns = [
   { header: "Fullname", accessor: "fullname" },
   { header: "Email", accessor: "email" },
   { header: "Phone", accessor: "phone" },
-  
 ];
 
 const ManageClient = () => {
@@ -34,7 +33,7 @@ const ManageClient = () => {
         address: client.address,
       }));
       setTableData(transformedData);
-      console.log(transformedData);
+      //console.log(transformedData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

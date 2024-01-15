@@ -40,7 +40,7 @@ const AdminProfile = () => {
       const getProfileData = `get/data/my-profile/${userId}`;
       const responseProfileData = await ApiService.get(getProfileData);
       const userProfile = responseProfileData.user || {};
-      console.log(userProfile);
+      //console.log(userProfile);
       setFullname(userProfile.fullname);
       setUsername(userProfile.username);
       setEmail(userProfile.email);
@@ -72,7 +72,7 @@ const AdminProfile = () => {
 
       const updateProfileData = `update/data/my-profile/${userId}`;
       await ApiService.update(updateProfileData, userProfileData);
-      console.log("successful");
+      //console.log("successful");
       // showToast("👍 Successful Submit!");
     } catch (error) {
       console.error("Error updating status:", error);

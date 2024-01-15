@@ -31,7 +31,7 @@ const RegisterComponent = () => {
       setPasswordError("");
       setLoading(true);
 
-      console.log("Register Successfully");
+      //console.log("Register Successfully");
       navigate("/login");
     } else {
       if (!username) {
@@ -64,4 +64,3 @@ const RegisterComponent = () => {
 };
 
 export default RegisterComponent;
-

@@ -43,7 +43,7 @@ const ManageContractor = () => {
         address: client.address,
       }));
       setTableData(transformedData);
-      console.log(transformedData);
+      //console.log(transformedData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -79,7 +79,7 @@ const ManageContractor = () => {
           contractorStatus: updatedStatus,
         });
 
-        console.log("Status updated successfully");
+        //console.log("Status updated successfully");
       } catch (error) {
         console.error("Error updating status:", error);
       }
@@ -89,7 +89,7 @@ const ManageContractor = () => {
   const handleAddContractor = () => {
     // Logic for handling the addition of a new contractor
     // You can show a different modal or perform other actions
-    console.log("Adding a new contractor");
+    //console.log("Adding a new contractor");
     setAddContractorIsModalOpen(true);
   };
 

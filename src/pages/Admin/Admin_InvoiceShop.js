@@ -35,7 +35,7 @@ const InvoiceShop = () => {
         endpointAppointmentList
       );
       const appointmentsData = responseAppointmentList.listSuccessPayment || [];
-      console.log(appointmentsData);
+      //console.log(appointmentsData);
       setAppointmentsData(appointmentsData);
 
       const uniqueData = appointmentsData.reduce((acc, appointment) => {
@@ -54,7 +54,7 @@ const InvoiceShop = () => {
       }, []);
 
       setTableData(uniqueData);
-      console.log(uniqueData);
+      //console.log(uniqueData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -63,7 +63,7 @@ const InvoiceShop = () => {
   useEffect(() => {
     fetchAppointmentsData();
   }, []);
-  console.log("Table Data:", tableData);
+  //console.log("Table Data:", tableData);
 
   const fetchTransactionData = (transactionId) => {
     // Filter appointmentsData based on the selected transaction_id
