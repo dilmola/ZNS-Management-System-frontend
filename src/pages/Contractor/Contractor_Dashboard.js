@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import Table from "../../components/common/Table/Table_Component";
 import { ListCardForPaymentStatus } from "../../components/common/Cards";
 import { useParams } from "react-router-dom"; // Import useParams
-import showToast from "../../components/common/Toast.js";
+import {
+  showToast,
+  showToastWithoutReload,
+} from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
 import CustomModal from "../../components/common/Modal";
 import ApiService from "../../API/ApiService.js";
@@ -107,7 +110,6 @@ const ContractorDashboard = () => {
         date_appointment: selectedDate,
         document_id: selectedCategory,
         appoinment_first_id: secondAppointmentRowData.appointment_id_Sec,
-        
       });
       //console.log("Form data submitted successfully:", response);
       showToast("👍 Successful Submit!");

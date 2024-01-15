@@ -5,10 +5,10 @@ import React, { useState, useEffect } from "react";
 import ReusableButton from "../../components/common/SaveButton";
 import ModalAddToCartItem from "../../pages/Client/Client_Modal/Client_ModalAddToCartItem";
 import { useParams } from "react-router-dom"; // Import useParams
-import showToast from "../../components/common/Toast.js";
+// import showToast from "../../components/common/Toast.js";
+import { showToast, showToastWithoutReload } from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
 import CustomModal from "../../components/common/Modal";
-
 import ApiService from "../../API/ApiService";
 
 const ClientShop = () => {
@@ -59,16 +59,7 @@ const ClientShop = () => {
   };
 
   const handleAddToCart = async (selectedItem) => {
-    //console.log
-    ({
-      itemId: selectedItem.item_id,
-      itemName: selectedItem.name_of_item,
-      quantity: "1",
-      price: selectedItem.price_item,
-      totalAmount: selectedItem.quantity_item * selectedItem.price_item,
-    });
     try {
-      // Prepare the data to be sent to the server
       const postData = {
         itemId: selectedItem.item_id,
         itemName: selectedItem.name_of_item,
@@ -81,7 +72,7 @@ const ClientShop = () => {
         `new/payment/item/${selectedItem.item_id}/user/${userId}`,
         postData
       );
-      showToast("👍 Successful Submit!");
+      showToastWithoutReload("👍 Successful Add to Cart!");
 
       // Log the server response (you can customize this based on your needs)
       //console.log("Server Response:", response.data);

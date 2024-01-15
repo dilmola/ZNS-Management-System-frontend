@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import Table from "../../components/common/Table/Table_Component";
 import PrintQuotationAppointment from "../../components/common/PrintQuotationAppointment";
 import PrintAppointmentInvoice from "../../components/common/PrintAppointmentInvoice";
-import showToast from "../../components/common/Toast.js";
+import {
+  showToast,
+  showToastWithoutReload,
+} from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
@@ -172,7 +175,11 @@ const ClientDashboard = () => {
     content: () => componentRef2.current,
   });
   const componentRef2 = useRef();
+  const [activeTab, setActiveTab] = useState("firstAppointment");
 
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
   return (
     <div className="p-12 mt-8.6m">
       {/* <h2 className="text-2xl	mb-6">Payment (in progress)</h2>

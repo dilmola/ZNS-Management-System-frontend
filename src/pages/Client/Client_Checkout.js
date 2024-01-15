@@ -3,7 +3,10 @@ import Table from "../../components/common/Table/Table_Component";
 import ApiService from "../../API/ApiService.js";
 import { useParams } from "react-router-dom";
 import Button from "../../components/common/SaveButton";
-import showToast from "../../components/common/Toast.js";
+import {
+  showToast,
+  showToastWithoutReload,
+} from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 

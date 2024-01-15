@@ -106,14 +106,14 @@ const AdminAppointment = () => {
 
   return (
     <div className="p-12 mt-8.6m">
-      <h2 className="text-2xl	mb-6">Manage appointment</h2>
-      <div>
+      <h2 className="text-2xl	mb-6">Submission Invoice</h2>
+      {/* <div>
         <ListCardForAppointmentClientStatus />
-      </div>
+      </div> */}
 
       {/* <h2 className="text-2xl	mb-6">Appointment</h2> */}
 
-      <h2 className="text-xl mb-6">Invoice submit</h2>
+      {/* <h2 className="text-xl mb-6">Invoice submit</h2> */}
       <div className="rounded-lg border-2 border-black ">
         <Table data={tableData} columns={columns} onRowClick={handleRowClick} />
       </div>

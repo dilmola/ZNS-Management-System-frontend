@@ -7,7 +7,10 @@ import Input from "../../components/common/InputField";
 import Button from "../../components/common/SaveButton";
 import ApiService from "../../API/ApiService.js";
 import { useParams } from "react-router-dom";
-import showToast from "../../components/common/Toast.js";
+import {
+  showToast,
+  showToastWithoutReload,
+} from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

@@ -6,7 +6,10 @@ import ApiService from "../../API/ApiService";
 
 import PrintQuotation from "../../components/common/PrintQuotation";
 import { useParams } from "react-router-dom"; // Import useParams
-import showToast from "../../components/common/Toast.js";
+import {
+  showToast,
+  showToastWithoutReload,
+} from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
 const Quotation = () => {
   const [formFields, setFormFields] = useState([]);
@@ -84,7 +87,7 @@ const Quotation = () => {
       const updateProfileData = `new/appointment/payment/item/${userId}`;
 
       const response = await ApiService.post(updateProfileData, requestData);
-      showToast("👍 Successful Checkout!");
+      showToast("👍 Successful Submit!");
 
       //console.log("API Response:", response);
 

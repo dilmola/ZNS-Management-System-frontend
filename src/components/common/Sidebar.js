@@ -73,6 +73,7 @@ const Sidebar = ({ setActiveContent, id }) => {
         setActiveContent("adminShop");
       } else if (menuType === "appointment") {
         setActiveContent("adminAppointment");
+      } else if (menuType === "appointment") {
       }
     } else if (users_type_id === 2) {
       //console.log("User Type 2 - Setting ActiveContent to contractor");
@@ -266,18 +267,42 @@ const Sidebar = ({ setActiveContent, id }) => {
                   <a
                     href="#"
                     onClick={() => handleMenuClick("appointment")}
-                    className="flex items-center p-3 text-slate-200	rounded-lg group hover:bg-gray-700"
+                    className="flex items-center p-3 text-slate-200 rounded-lg group hover:bg-gray-700"
                   >
-                    <div className="w-auto">
-                      <img
-                        className="h-6 mr-3 sm:h-5"
-                        src={appointment}
-                        alt="appointment"
-                      />
-                    </div>
-                    <span className="ml-8">Appointment</span>
+                    {(users_type_id === 1 || users_type_id === 2) && (
+                      <div className="w-auto">
+                        <img
+                          className="h-6 mr-3 sm:h-5"
+                          src={order}
+                          alt="order"
+                        />
+                      </div>
+                    )}
+
+                    {users_type_id === 2 && (
+                      <span className="ml-8">Create Quotation</span>
+                    )}
+
+                    {users_type_id === 1 && (
+                      <span className="ml-8">Submission Invoice</span>
+                    )}
+                    
+                    {users_type_id === 3 && (
+                      <div className="w-auto">
+                        <img
+                          className="h-6 mr-3 sm:h-5"
+                          src={appointment}
+                          alt="appointment"
+                        />
+                      </div>
+                    )}
+
+                    {users_type_id === 3 && (
+                      <span className="ml-8">Appointment</span>
+                    )}
                   </a>
                 </li>
+
                 {/* <ul>
                   <li>
                     <a

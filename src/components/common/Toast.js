@@ -23,4 +23,13 @@ const showToast = (message) => {
   });
 };
 
-export default showToast;
+const showToastWithoutReload = (message) => {
+  toast(message, {
+    hideProgressBar: true,
+    autoClose: 2000,
+    position: "top-center",
+    style: customToastStyle,
+  });
+};
+
+export { showToast, showToastWithoutReload }

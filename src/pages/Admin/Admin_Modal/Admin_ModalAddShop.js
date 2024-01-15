@@ -4,7 +4,9 @@ import Input from "../../../components/common/InputField";
 import Button from "../../../components/common/SaveButton";
 import addIcon from "../../../img/icon/add-icon.png";
 import UploadImage from "../../../components/common/UploadImage";
-import showToast from "../../../components/common/Toast.js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { showToast, showToastWithoutReload } from "../../../components/common/Toast.js";
 
 const ModalAddShop = ({ isOpen, closeModal, addItem }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -38,6 +40,7 @@ const ModalAddShop = ({ isOpen, closeModal, addItem }) => {
           body: formData,
         }
       );
+      showToast("👍 Successful Submit!");
 
       if (response.ok) {
         //console.log("Image uploaded successfully");
@@ -57,7 +60,7 @@ const ModalAddShop = ({ isOpen, closeModal, addItem }) => {
         addItem && (
           <div>
             <form onSubmit={handleSubmit}>
-              <h2 className="text-lg font-semibold mb-10">Add new item</h2>
+              <h2 className="text-lg font-semibold mb-10">Add item</h2>
               <label className="font-semibold">Name item:</label>
               <Input
                 type="text"
@@ -99,6 +102,7 @@ const ModalAddShop = ({ isOpen, closeModal, addItem }) => {
                 <button type="submit">Upload Image</button>
               </div>
             </form>
+            <ToastContainer />
           </div>
         )
       }

@@ -36,13 +36,7 @@ const ImageUploadForm = () => {
         body: formData,
       });
 
-      if (response.ok) {
-        //console.log
-        (
-          editingItemId
-            ? 'Item edited successfully'
-            : 'Image uploaded successfully'
-        );
+      if (response.ok) {        
         setNameOfItem('');
         setDescriptionItem('');
         setImage(null);

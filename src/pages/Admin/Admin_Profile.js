@@ -4,7 +4,10 @@ import submitIcon from "../../img/icon/submit-icon.png";
 import profilePicture from "../../img/icon/profile_pictures/male.png";
 import ApiService from "../../API/ApiService.js";
 import { useParams } from "react-router-dom"; // Import useParams
-import showToast from "../../components/common/Toast.js";
+import {
+  showToast,
+  showToastWithoutReload,
+} from "../../components/common/Toast.js";
 import { ToastContainer } from "react-toastify";
 import React, { useState, useEffect } from "react";
 import { FaLock, FaLockOpen } from "react-icons/fa";

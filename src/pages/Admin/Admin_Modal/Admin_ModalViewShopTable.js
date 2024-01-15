@@ -8,7 +8,9 @@ import UploadImage from "../../../components/common/UploadImage";
 import exampleimg from "../../../img/icon/profile_pictures/male.png";
 import axios from "axios";
 import ApiService from "../../../API/ApiService.js";
-import showToast from "../../../components/common/Toast.js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { showToast, showToastWithoutReload } from "../../../components/common/Toast.js";
 
 const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
   const [image, setImage] = useState(null);
@@ -93,7 +95,7 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
             </div>
             <div className="col-auto">
               <form onSubmit={handleSubmit}>
-                <h2 className="text-lg font-semibold mb-10">Add new item</h2>
+                <h2 className="text-lg font-semibold mb-10">Edit item</h2>
                 <label className="font-semibold">Name item:</label>
                 <Input
                   className="mb-8"
@@ -160,6 +162,7 @@ const ModalViewShopTable = ({ isOpen, closeModal, selectedItem }) => {
                 </div>
               </form>
             </div>
+            <ToastContainer />
           </div>
         )
       }

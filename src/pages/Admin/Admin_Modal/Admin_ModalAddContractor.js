@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CustomModal from "../../../components/common/Modal";
 import Input from "../../../components/common/InputField";
-import showToast from "../../../components/common/Toast.js";
+import { showToast, showToastWithoutReload } from "../../../components/common/Toast.js";
 import ApiService from "../../../API/ApiService.js";
 
 const ModalAddContractor = ({ isOpen, closeModal }) => {
